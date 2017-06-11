@@ -1,0 +1,32 @@
+enum Days: Double {
+  case one = 86400
+  case two = 172800
+  case three = 259200
+  case four = 345600
+  case five = 432000
+  case six = 518400
+  case seven = 604800
+  case eight = 691200
+  case nine = 777600
+  case ten = 864000
+  case eleven = 950400
+  case twelve = 1036800
+  case thirteen = 1123200
+  case fourteen = 1209600
+  case fifteen = 1296000
+  case sixteen = 1382400
+  case seventeen = 1468800
+  case eighteen = 1555200
+  case nineteen = 1641600
+  case twenty = 1728000
+  case twentyone = 1814400
+  case twentytwo = 1900800
+  case twentythree = 1987200
+  case twentyfour = 2073600
+  case twentyfive = 2160000
+  case twentysix = 2246400
+  case twentyseven = 2332800
+  case twentyeight = 2419200
+  case twentynine = 2505600
+  case thirty = 2592000
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Server-Side Swift Racing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center">SERVER-SIDE SWIFT RACING</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <canvas id="myChart" width="100%" height="500"></canvas>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          #loop(dates, "date") {
+            #(date)
+          }
+        </div>
+        <hr>
+      </div>
+      #(vapor.name)<br>
+      #(vapor.url)<br>
+      #(vapor.website)<br>
+      #loop(vapor.stars, "star") {
+        [ #(star.amount) | #(star.created_at) ]
+      }
+    </div>
+    <div class="data-resource">
+      <span id="vapor"
+        data-stars="[#loop(vapor.stars, "star") {#(star.amount),}]"></span>
+      <span id="perfect"></span>
+      <span id="kitura"></span>
+      <span id="zewo"></span>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script type="text/javascript" src="javascripts/line-chart.js"></script>
+  </body>
+</html>

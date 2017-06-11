@@ -9,7 +9,7 @@ extension Droplet {
     
     let repoDispatcher = RepositoryDispatcher(drop: self)
     
-    Jobs.add(interval: .seconds(23)) {
+    Jobs.add(interval: .days(1)) {
       try repoDispatcher.fetchStars()
     }
   }

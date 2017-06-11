@@ -55,6 +55,7 @@ extension Stars: JSONConvertible {
     
     try json.set("repository_id", repositoryId)
     try json.set("amount", amount)
+    try json.set("created_at", createdAt)
     
     return json
   }
