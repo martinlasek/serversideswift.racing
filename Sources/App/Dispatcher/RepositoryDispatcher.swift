@@ -8,16 +8,18 @@ class RepositoryDispatcher {
   }
   
   func updateStars() throws {
-    try updateVaporStars()
+    try updateStarsOf(scraper: VaporScraper(drop: drop))
+    try updateStarsOf(scraper: PerfectScraper(drop: drop))
+    try updateStarsOf(scraper: KituraScraper(drop: drop))
+    try updateStarsOf(scraper: ZewoScraper(drop: drop))
   }
   
-  private func updateVaporStars() throws {
-    let scraper = VaporScraper(drop: drop)
+  private func updateStarsOf(scraper: Scraper) throws {
     let starsAmount = try scraper.scrapeStars()
     
-    guard let repo = try Repository.makeQuery().filter("name", VaporScraper.name).first() else {
-      try createVaporRepository()
-      try updateVaporStars()
+    guard let repo = try Repository.makeQuery().filter("name", scraper.name).first() else {
+      try createRepository(scraper: scraper)
+      try updateStarsOf(scraper: scraper)
       return
     }
     
@@ -29,8 +31,8 @@ class RepositoryDispatcher {
     try stars.save()
   }
   
-  private func createVaporRepository() throws {
-    let vaporRepo = Repository(name: VaporScraper.name, url: VaporScraper.url, website: VaporScraper.website)
+  private func createRepository(scraper: Scraper) throws {
+    let vaporRepo = Repository(name: scraper.name, url: scraper.url, website: scraper.website)
     try vaporRepo.save()
   }
 }
