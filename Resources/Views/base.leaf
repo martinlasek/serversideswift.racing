@@ -7,16 +7,82 @@
   </head>
   <body>
     <div class="container">
+
       <div class="row">
         <div class="col-xs-12">
           <h1 class="text-center">SERVER-SIDE SWIFT RACING</h1>
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12">
           <canvas id="myChart" width="100%" height="500"></canvas>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="panel vapor text-center">
+            <div class="panel-heading">
+              <h2>Vapor</h2>
+            </div>
+            <div class="panel-body">
+              <div class="big-number">
+                #(vapor.stars_per_day)
+              </div>
+              <div class="small text-muted">
+                stars per day
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="panel perfect text-center">
+            <div class="panel-heading">
+              <h2>Perfect</h2>
+            </div>
+            <div class="panel-body">
+              <div class="big-number">
+                #(perfect.stars_per_day)
+              </div>
+              <div class="small text-muted">
+                stars per day
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="panel kitura text-center">
+            <div class="panel-heading">
+              <h2>Kitura</h2>
+            </div>
+            <div class="panel-body">
+              <div class="big-number">
+                #(kitura.stars_per_day)
+              </div>
+              <div class="small text-muted">
+                stars per day
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="panel zewo text-center">
+            <div class="panel-heading">
+              <h2>Zewo</h2>
+            </div>
+            <div class="panel-body">
+              <div class="big-number">
+                #(zewo.stars_per_day)
+              </div>
+              <div class="small text-muted">
+                stars per day
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="data-resource">
       <span id="vapor"    data-stars="#loop(vapor.stars, "star") {#(star.amount),}"   class="hidden"></span>

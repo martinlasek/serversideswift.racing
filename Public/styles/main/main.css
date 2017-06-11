@@ -6,3 +6,43 @@ body {
   background-color: #00314a;
   color: #ffffff;
 }
+
+h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.big-number {
+  font-size: 26px;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.panel {
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.panel-body {
+  background-color: #ffffff;
+}
+
+.vapor, .perfect, .kitura, .zewo {
+  color: rgba(0, 0, 0, 0.66);
+  font-size: 20px;
+}
+
+.vapor .panel-heading {
+  background-color: #92a8d1;
+}
+.perfect .panel-heading {
+  background-color: #f78d28;
+}
+.kitura .panel-heading {
+  background-color: #00bbe6;
+}
+.zewo .panel-heading {
+  background-color: #dd342b;
+}

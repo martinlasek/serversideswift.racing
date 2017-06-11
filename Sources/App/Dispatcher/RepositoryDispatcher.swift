@@ -22,6 +22,12 @@ class RepositoryDispatcher {
     return try repoRepo.findAllRepositories()
   }
   
+  func getStarsPerDay(of repoId: Int) throws -> Int {
+    
+    let stars = try starsRepo.findAllStarsBy(repoId: repoId).map {star in star.amount}
+    return Int(stars.reduce(0, +) / stars.count)
+  }
+  
   func getStarsOfLastThirtyDays(of repoId: Int) throws -> [Stars] {
     
     let todayMinusThirtyDays = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate-Days.thirty.rawValue)

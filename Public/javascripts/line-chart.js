@@ -82,7 +82,7 @@ var myLineChart = new Chart(ctx, {
   },
   options: {
     legend: {
-      position: "bottom"
+      display: false
     },
     scales: {
       yAxes: [{

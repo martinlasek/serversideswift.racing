@@ -20,7 +20,8 @@ extension Droplet {
             "name": repo.name,
             "url": repo.url,
             "website": repo.website,
-            "stars": try repoDispatcher.getStarsOfLastThirtyDays(of: repo.id!.int!).makeJSON()
+            "stars": try repoDispatcher.getStarsOfLastThirtyDays(of: repo.id!.int!).makeJSON(),
+            "stars_per_day": repoDispatcher.getStarsPerDay(of: repo.id!.int!)
           ]
         )
       }
