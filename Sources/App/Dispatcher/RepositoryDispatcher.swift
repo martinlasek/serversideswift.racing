@@ -1,25 +1,39 @@
 import Vapor
 
 class RepositoryDispatcher {
+  let repoRepo = RepositoryRepository()
+  let starsRepo = StarsRepository()
   let drop: Droplet
   
   init(drop: Droplet) {
     self.drop = drop
   }
+
+  // MARK: public functions
   
-  func updateStars() throws {
-    try updateStarsOf(scraper: VaporScraper(drop: drop))
-    try updateStarsOf(scraper: PerfectScraper(drop: drop))
-    try updateStarsOf(scraper: KituraScraper(drop: drop))
-    try updateStarsOf(scraper: ZewoScraper(drop: drop))
+  func fetchStars() throws {
+    try fetchStarsOf(scraper: VaporScraper(drop: drop))
+    try fetchStarsOf(scraper: PerfectScraper(drop: drop))
+    try fetchStarsOf(scraper: KituraScraper(drop: drop))
+    try fetchStarsOf(scraper: ZewoScraper(drop: drop))
   }
   
-  private func updateStarsOf(scraper: Scraper) throws {
+  func getAllRepositories() throws -> [Repository] {
+    return try repoRepo.findAllRepositories()
+  }
+  
+  func getAllStarsBy(repoId: Int) throws -> [Stars] {
+    return try starsRepo.findAllStarsBy(repoId: repoId)
+  }
+  
+  // MARK: private functions
+  
+  private func fetchStarsOf(scraper: Scraper) throws {
     let starsAmount = try scraper.scrapeStars()
     
     guard let repo = try Repository.makeQuery().filter("name", scraper.name).first() else {
       try createRepository(scraper: scraper)
-      try updateStarsOf(scraper: scraper)
+      try fetchStarsOf(scraper: scraper)
       return
     }
     
