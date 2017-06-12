@@ -11,7 +11,9 @@
 
       <div class="row">
         <div class="col-xs-12">
+          <br>
           <h1 class="text-center">SERVER-SIDE SWIFT RACING</h1>
+          <br>
         </div>
       </div>
 
@@ -20,7 +22,7 @@
           <canvas id="myChart" width="100%" height="500"></canvas>
         </div>
       </div>
-      <hr>
+      <br><br>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="panel vapor text-center">
@@ -29,7 +31,7 @@
             </div>
             <div class="panel-body">
               <div class="big-number">
-                #(vapor.stars_per_day)
+                -
               </div>
               <div class="small text-muted">
                 stars per day
@@ -44,7 +46,7 @@
             </div>
             <div class="panel-body">
               <div class="big-number">
-                #(perfect.stars_per_day)
+                -
               </div>
               <div class="small text-muted">
                 stars per day
@@ -59,7 +61,7 @@
             </div>
             <div class="panel-body">
               <div class="big-number">
-                #(kitura.stars_per_day)
+                -
               </div>
               <div class="small text-muted">
                 stars per day
@@ -74,7 +76,7 @@
             </div>
             <div class="panel-body">
               <div class="big-number">
-                #(zewo.stars_per_day)
+                -
               </div>
               <div class="small text-muted">
                 stars per day

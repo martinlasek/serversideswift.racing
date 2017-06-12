@@ -1,18 +1,26 @@
 var vapor = document.getElementById('vapor');
 var vaporStarsString = vapor.getAttribute('data-stars');
 var vaporStars = getArrayOf(vaporStarsString);
+var vStarsAvg = document.querySelector('.vapor .big-number');
+vStarsAvg.innerHTML = calcAvgStarGrowthOf(vaporStars);
 
 var perfect = document.getElementById('perfect');
 var perfectStarsString = perfect.getAttribute('data-stars');
 var perfectStars = getArrayOf(perfectStarsString);
+var pStarsAvg = document.querySelector('.perfect .big-number');
+pStarsAvg.innerHTML = calcAvgStarGrowthOf(perfectStars);
 
 var kitura = document.getElementById('kitura');
 var kituraStarsString = kitura.getAttribute('data-stars');
 var kituraStars = getArrayOf(kituraStarsString);
+var kStarsAvg = document.querySelector('.kitura .big-number');
+kStarsAvg.innerHTML = calcAvgStarGrowthOf(kituraStars);
 
 var zewo = document.getElementById('zewo');
 var zewoStarsString = zewo.getAttribute('data-stars');
 var zewoStars = getArrayOf(zewoStarsString);
+var zStarsAvg = document.querySelector('.zewo .big-number');
+zStarsAvg.innerHTML = calcAvgStarGrowthOf(zewoStars);
 
 var datesString = document.getElementById('dates').getAttribute('data-dates');
 var dates = getArrayOf(datesString);
@@ -21,6 +29,39 @@ var vStars = createStarsAmountForDateAmount(vaporStars, dates);
 var pStars = createStarsAmountForDateAmount(perfectStars, dates);
 var kStars = createStarsAmountForDateAmount(kituraStars, dates);
 var zStars = createStarsAmountForDateAmount(zewoStars, dates);
+
+function calcAvgStarGrowthOf(starsArray) {
+
+  var prevStars = 0;
+  var nextStars = 0;
+  var grows = [];
+  var sum = 0;
+  var avg = 0;
+
+  // average of stars requires minimum 2 stars-set
+  if (starsArray.length < 2) {
+    return avg;
+  }
+console.log("array length: " + starsArray.length);
+console.log("array: " + starsArray);
+  for(var i = 0; i < starsArray.length; i++) {
+
+    if (i+1 < starsArray.length) {
+
+      grows.push(starsArray[i+1] - starsArray[i])
+    }
+  }
+console.log("array with stars: " + grows);
+  sum = grows.reduce((one, two) => one+two, 0);
+
+  if (sum <= 0) {
+    return avg;
+  }
+
+  avg = sum  / grows.length;
+
+  return avg;
+}
 
 function createStarsAmountForDateAmount(stars, dates) {
 
