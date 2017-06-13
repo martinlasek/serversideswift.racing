@@ -12,7 +12,12 @@
       <div class="row">
         <div class="col-xs-12">
           <br>
-          <h1 class="text-center">SERVER-SIDE SWIFT RACING</h1>
+          <h1 class="text-center">
+            <span>server</span>
+            <span class="light">side</span>
+            <span class="lighter">swift</span>
+            <span class="lightest">.racing</span>
+          </h1>
           <br>
         </div>
       </div>

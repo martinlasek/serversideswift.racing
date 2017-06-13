@@ -7,9 +7,25 @@ body {
   color: #ffffff;
 }
 
+h1 span {
+  font-size: 26px;
+}
+
 h2 {
   font-size: 32px;
   margin: 0;
+}
+
+.light, .lighter, .lightest {
+  font-weight: 400;
+  margin-left: -7px;
+}
+.lighter {
+  font-weight: 300;
+}
+.lightest {
+  font-size: 18px;
+  font-weight: 100;
 }
 
 .big-number {
