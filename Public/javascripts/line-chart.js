@@ -32,18 +32,14 @@ var zStars = createStarsAmountForDateAmount(zewoStars, dates);
 
 function calcAvgStarGrowthOf(starsArray) {
 
-  var prevStars = 0;
-  var nextStars = 0;
   var grows = [];
-  var sum = 0;
   var avg = 0;
 
   // average of stars requires minimum 2 stars-set
   if (starsArray.length < 2) {
     return avg;
   }
-console.log("array length: " + starsArray.length);
-console.log("array: " + starsArray);
+
   for(var i = 0; i < starsArray.length; i++) {
 
     if (i+1 < starsArray.length) {
@@ -51,7 +47,7 @@ console.log("array: " + starsArray);
       grows.push(starsArray[i+1] - starsArray[i])
     }
   }
-console.log("array with stars: " + grows);
+
   sum = grows.reduce((one, two) => one+two, 0);
 
   if (sum <= 0) {
@@ -60,7 +56,7 @@ console.log("array with stars: " + grows);
 
   avg = sum  / grows.length;
 
-  return avg;
+  return parseFloat(avg).toFixed(2);
 }
 
 function createStarsAmountForDateAmount(stars, dates) {
@@ -147,4 +143,5 @@ var myLineChart = new Chart(ctx, {
     responsive: true
   }
 });
+
 Chart.defaults.global.defaultFontColor = '#ffffff'

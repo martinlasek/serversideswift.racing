@@ -5,20 +5,56 @@ html {
 body {
   background-color: #00314a;
   color: #ffffff;
+  font-family: 'Lato', 'Helvetica Neue', 'Ubuntu', 'Verdana', 'sans-serif';
+  height: 100%;
 }
 
 h1 span {
   font-size: 26px;
+  font-weight: 600;
 }
 
 h2 {
   font-size: 32px;
+  font-weight: 600;
   margin: 0;
+}
+
+footer {
+  align-items: center;
+  bottom: 0;
+  color: rgba(255, 255, 255, 0.66);
+  display: flex;
+  font-size: 16px;
+  font-weight: 300;
+  height: 50px;
+  position: absolute;
+  width: calc(100% - 30px)
+}
+
+footer a {
+  color: #ffffff;
+  font-weight: 500;
+  text-underline: none;
+}
+
+footer a:hover {
+  color: #ffffff;
+}
+
+footer .right {
+  margin-left: auto;
+}
+
+.container {
+  min-height: 100%;
+  padding-bottom: 50px;
+  position: relative;
 }
 
 .light, .lighter, .lightest {
   font-weight: 400;
-  margin-left: -7px;
+  margin-left: -5px;
 }
 .lighter {
   font-weight: 300;
@@ -33,7 +69,7 @@ h2 {
 }
 
 .small {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .panel {

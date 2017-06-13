@@ -40,7 +40,9 @@ extension Droplet {
     let today = Date.timeIntervalSinceReferenceDate
     var days = [String]()
     
-    for day in 1...30 {
+    // WORKAROUND: start on the day before yesterday
+    // because server will now magically start the day before yesterday instead
+    for day in 2...31 {
       
       let stringDate = try removeTimeFrom(date: Date(timeIntervalSinceReferenceDate: today-(dayInSeconds * Double(day))))
       days.append(stringDate)
