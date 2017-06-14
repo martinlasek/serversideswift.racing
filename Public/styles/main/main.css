@@ -11,7 +11,7 @@ body {
 
 h1 span {
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 h1 a {
@@ -20,7 +20,8 @@ h1 a {
   transition: border-bottom .1s ease-in-out;
 }
 
-h1 a:hover {
+h1 a:hover,
+h1 a:focus {
   color: #ffffff;
   text-decoration: none;
   border-bottom: 1px solid #ffffff;
@@ -50,7 +51,8 @@ footer a {
   text-underline: none;
 }
 
-footer a:hover {
+footer a:hover,
+footer a:focus {
   color: #ffffff;
 }
 
@@ -65,15 +67,15 @@ footer .right {
 }
 
 .light, .lighter, .lightest {
-  font-weight: 400;
+  font-weight: 600;
   margin-left: -5px;
 }
 .lighter {
-  font-weight: 300;
+  font-weight: 400;
 }
 .lightest {
   font-size: 18px;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 .big-number {

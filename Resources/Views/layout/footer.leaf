@@ -1,8 +1,8 @@
 <footer>
   <span class="left">
-    Build with
     <a href="https://github.com/vapor/vapor" target="_blank" class="vapor-link">
-      Vapor
+      Build with
+      <span class="vapor-text">Vapor</span>
       <img src="/images/vapor-icon.png" alt="vapor" class="vapor-icon">
     </a>
   </span>
