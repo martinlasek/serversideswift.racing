@@ -28,7 +28,35 @@ extension Droplet {
       
       try self.addLastThirtyDatesToJson(j: &j)
       let n = j.makeNode(in: nil)
-      return try self.view.make("base", n)
+      return try self.view.make("home", n)
+    }
+    
+    get("/imprint") { req in
+      
+      return try self.view.make("imprint")
+    }
+    
+    get("/image") { req in
+      
+      let url = "https://twitter.com/martinlasek"
+      let selector = ".ProfileAvatar-image"
+      
+      let resp = try self.client.get(url).description
+        
+      guard let html: Document = try? SwiftSoup.parse(resp) else {
+        throw ScraperError.couldNotParse("could not parse response to html (\(url))")
+      }
+      
+      guard let imageElement = try html.select(selector).first() else {
+        throw ScraperError.couldNotSelectElement("failed to get image url from twitter profile picture")
+      }
+      
+      let imageUrl = try imageElement.attr("src")
+      
+      var j = JSON()
+      try j.set("url", String(imageUrl))
+      
+      return j
     }
   }
   

@@ -1,0 +1,10 @@
+<footer>
+  <span class="left">
+    Build with
+    <a href="https://github.com/vapor/vapor" target="_blank" class="vapor-link">
+      Vapor
+      <img src="/images/vapor-icon.png" alt="vapor" class="vapor-icon">
+    </a>
+  </span>
+  <span class="right"><a href="/imprint">Imprint</a></span>
+</footer>

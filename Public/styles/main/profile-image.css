@@ -1,0 +1,74 @@
+.wrapper {
+  padding-top: 120px;
+}
+
+.wrapper a {
+  color: #ffffff;
+  display: inline-block;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.wrapper a:hover {
+  color: #ffffff;
+}
+
+.wrapper .lighter a {
+  font-weight: 300;
+}
+
+#profile-image {
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  width: 100px;
+}
+
+#profile-image img {
+  height: 100%;
+  animation-name: easein;
+  animation-duration: .2s;
+}
+
+@keyframes easein {
+  0% {opacity: 0;}
+  25% {opacity: 0.25;}
+  50% {opacity: 0.5;}
+  75% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
+@-webkit-keyframes easein {
+  0% {opacity: 0;}
+  25% {opacity: 0.25;}
+  50% {opacity: 0.5;}
+  75% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
+@-khtml-keyframes easein {
+  0% {opacity: 0;}
+  25% {opacity: 0.25;}
+  50% {opacity: 0.5;}
+  75% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
+@-moz-keyframes easein {
+  0% {opacity: 0;}
+  25% {opacity: 0.25;}
+  50% {opacity: 0.5;}
+  75% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
+@-o-keyframes easein {
+  0% {opacity: 0;}
+  25% {opacity: 0.25;}
+  50% {opacity: 0.5;}
+  75% {opacity: 0.75;}
+  100% {opacity: 1;}
+}

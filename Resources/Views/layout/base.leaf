@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  #embed("layout/head")
+  <body>
+    #embed("partials/github-corner")
+    <div class="container">
+      #embed("layout/title")
+
+      #import("content")
+
+      #embed("layout/footer")
+    </div>
+
+    #embed("layout/javascript")
+  </body>
+</html>
