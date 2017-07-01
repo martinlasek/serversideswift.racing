@@ -28,6 +28,7 @@ if (typeof ctx != undefined && ctx != null) {
 
   var datesString = document.getElementById('dates').getAttribute('data-dates');
   var dates = getArrayOf(datesString);
+  dates = formatDates(dates)
 
   var vStars = createStarsAmountForDateAmount(vaporStars, dates);
   var pStars = createStarsAmountForDateAmount(perfectStars, dates);
@@ -87,6 +88,13 @@ if (typeof ctx != undefined && ctx != null) {
   function getArrayOf(starsString) {
     var array = starsString.split(',').filter(s => s != '');
     return array;
+  }
+
+  function formatDates(dates) {
+    dates = dates.map(date => date.split('-'));
+    dates = dates.map(array => array[2] + '.' + array[1]);
+    console.log(dates);
+    return dates;
   }
 
   var myLineChart = new Chart(ctx, {
