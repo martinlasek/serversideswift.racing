@@ -1,7 +1,7 @@
 import Vapor
 
 class GitRepoDispatcher {
-  let repoRepo = GitRepoRepository()
+  let gitRepoRepository = GitRepoRepository()
   let starsRepo = StarsRepository()
   let drop: Droplet
   
@@ -18,18 +18,19 @@ class GitRepoDispatcher {
     try fetchStarsOf(scraper: ZewoScraper(drop: drop))
   }
   
-  func getAllRepositories() throws -> [GitRepo] {
-    return try repoRepo.findAllRepositories()
+  func getAllGitRepos(req: GitRepoListRequest) throws -> GitRepoListResponse? {
+    guard let list = try gitRepoRepository.findAllGitRepos() else {
+      throw RepositoryError.couldNotFetchGitRepos("could not fetch git repositories")
+    }
+    return GitRepoListResponse(list: list)
   }
   
   func getStarsPerDay(of repoId: Int) throws -> Int {
-    
     let stars = try starsRepo.findAllStarsBy(repoId: repoId).map {star in star.amount}
     return Int(stars.reduce(0, +) / stars.count)
   }
   
   func getStarsOfLastThirtyDays(of repoId: Int) throws -> [Stars] {
-    
     let todayMinusThirtyDays = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate-Days.thirty.rawValue)
     return try starsRepo.findAllStarsSince(date: todayMinusThirtyDays, of: repoId)
   }

@@ -1,7 +1,6 @@
 class GitRepoRepository {
   
-  func findAllRepositories() throws -> [GitRepo] {
-    
+  func findAllGitRepos() throws -> [GitRepo]? {
     return try GitRepo.makeQuery().all()
   }
 }

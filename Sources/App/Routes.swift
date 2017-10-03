@@ -5,15 +5,21 @@ extension Droplet {
   
   func setupRoutes() throws {
     
+    let gitRepoController = GitRepoController(drop: self)
+    gitRepoController.setupRoutes()
+    
     get("/") { request in
       
       let repoDispatcher = GitRepoDispatcher(drop: self)
       
-      let repos = try repoDispatcher.getAllRepositories()
+      guard let repos = try repoDispatcher.getAllGitRepos(req: GitRepoListRequest()) else {
+        throw GitRepoError.couldNotGetRepoList("could not get git repos")
+      }
       
       var j = JSON()
       
-      for repo in repos {
+      for repo in repos.list
+      {
         
         try j.set(
           repo.name, [
