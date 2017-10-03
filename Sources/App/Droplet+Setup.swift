@@ -7,10 +7,10 @@ extension Droplet {
       
     try setupRoutes()
     
-    let repoDispatcher = RepositoryDispatcher(drop: self)
+    let gitRepoDispatcher = GitRepoDispatcher(drop: self)
     
     Jobs.add(interval: .days(1)) {
-      try repoDispatcher.fetchStars()
+      try gitRepoDispatcher.fetchStars()
     }
   }
 }

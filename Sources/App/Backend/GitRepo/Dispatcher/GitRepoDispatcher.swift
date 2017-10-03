@@ -1,7 +1,7 @@
 import Vapor
 
-class RepositoryDispatcher {
-  let repoRepo = RepositoryRepository()
+class GitRepoDispatcher {
+  let repoRepo = GitRepoRepository()
   let starsRepo = StarsRepository()
   let drop: Droplet
   
@@ -18,7 +18,7 @@ class RepositoryDispatcher {
     try fetchStarsOf(scraper: ZewoScraper(drop: drop))
   }
   
-  func getAllRepositories() throws -> [Repository] {
+  func getAllRepositories() throws -> [GitRepo] {
     return try repoRepo.findAllRepositories()
   }
   
@@ -43,7 +43,7 @@ class RepositoryDispatcher {
   private func fetchStarsOf(scraper: Scraper) throws {
     let starsAmount = try scraper.scrapeStars()
     
-    guard let repo = try Repository.makeQuery().filter("name", scraper.name).first() else {
+    guard let repo = try GitRepo.makeQuery().filter("name", scraper.name).first() else {
       try createRepository(scraper: scraper)
       try fetchStarsOf(scraper: scraper)
       return
@@ -58,7 +58,7 @@ class RepositoryDispatcher {
   }
   
   private func createRepository(scraper: Scraper) throws {
-    let vaporRepo = Repository(name: scraper.name, url: scraper.url, website: scraper.website)
+    let vaporRepo = GitRepo(name: scraper.name, url: scraper.url, website: scraper.website)
     try vaporRepo.save()
   }
 }

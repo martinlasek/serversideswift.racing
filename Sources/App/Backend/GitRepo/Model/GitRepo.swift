@@ -2,7 +2,7 @@ import Vapor
 import FluentProvider
 import HTTP
 
-final class Repository: Model {
+final class GitRepo: Model {
   let storage = Storage()
   var name: String
   var url: String
@@ -31,7 +31,7 @@ final class Repository: Model {
   }
 }
 
-extension Repository: Preparation {
+extension GitRepo: Preparation {
   
   static func prepare(_ database: Database) throws {
     try database.create(self) { builder in
@@ -47,7 +47,7 @@ extension Repository: Preparation {
   }
 }
 
-extension Repository: JSONConvertible {
+extension GitRepo: JSONConvertible {
   convenience init(json: JSON) throws {
     try self.init(
       name: json.get("name"),
@@ -68,4 +68,4 @@ extension Repository: JSONConvertible {
   }
 }
 
-extension Repository: ResponseRepresentable { }
+extension GitRepo: ResponseRepresentable { }

@@ -7,7 +7,7 @@ extension Droplet {
     
     get("/") { request in
       
-      let repoDispatcher = RepositoryDispatcher(drop: self)
+      let repoDispatcher = GitRepoDispatcher(drop: self)
       
       let repos = try repoDispatcher.getAllRepositories()
       

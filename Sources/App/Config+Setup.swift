@@ -18,7 +18,7 @@ extension Config {
   }
   
   private func setupPreparations() throws {
-    preparations.append(Repository.self)
+    preparations.append(GitRepo.self)
     preparations.append(Stars.self)
   }
 }
