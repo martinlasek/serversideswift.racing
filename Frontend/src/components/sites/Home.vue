@@ -1,7 +1,7 @@
 <template>
   <base-layout>
     <template slot="content">
-      <h1>serversideswift.racing</h1>
+      serversideswift.racing
     </template>
   </base-layout>
 </template>
