@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  require('./assets/styles/template/vendor/ionicons/css/ionicons.css');
   require('./assets/styles/template/css/app.css');
   require('./assets/styles/template/vendor/bootstrap/dist/css/bootstrap.min.css');
 
