@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/vapor/json.git",
         "state": {
           "branch": null,
-          "revision": "5c2a62771cefdb04b1f96f4ccc52b581fe20cfb1",
-          "version": "2.2.0"
+          "revision": "735800d8f2e75ebe3be25559eb6a781f4666dcfc",
+          "version": "2.2.1"
         }
       },
       {
@@ -114,8 +114,8 @@
         "repositoryURL": "https://github.com/BrettRToomey/Jobs.git",
         "state": {
           "branch": null,
-          "revision": "f3c0a6abf0eaad8f1540f2f942efbd92f2b597c6",
-          "version": "1.0.0"
+          "revision": "838827f8aa01ff3c5f7ab58f7e89fc850e5b3281",
+          "version": "1.1.1"
         }
       },
       {
@@ -195,8 +195,8 @@
         "repositoryURL": "https://github.com/vapor/routing.git",
         "state": {
           "branch": null,
-          "revision": "66750975f5e5abaacf4bfa4d37ec85dd20c89312",
-          "version": "2.1.0"
+          "revision": "cb9d78aca2540c1a6b45b0ab43e5b0c50f29d216",
+          "version": "2.2.0"
         }
       },
       {
@@ -222,8 +222,8 @@
         "repositoryURL": "https://github.com/scinfu/SwiftSoup.git",
         "state": {
           "branch": null,
-          "revision": "4e6780dcc79e29f8d0fb4f29de0f1e1c1bb2a187",
-          "version": "1.5.2"
+          "revision": "27bd32370929c4dbc20f0c0f29d58852120e7548",
+          "version": "1.5.4"
         }
       },
       {
