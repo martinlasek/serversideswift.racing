@@ -9,6 +9,21 @@ class GitRepoDispatcher {
     self.drop = drop
   }
 
+  ///
+  /// NEW
+  ///
+  
+  func getAll(req: GitRepoListRequest) throws -> GitRepoListResponse? {
+    guard let list = try gitRepoRepository.findAllGitRepos() else {
+      throw RepositoryError.couldNotFetchGitRepos("could not fetch git repositories")
+    }
+    return GitRepoListResponse(list: list)
+  }
+  
+  ///
+  /// OLD
+  ///
+  
   // MARK: public functions
   
   func fetchStars() throws {
@@ -16,13 +31,6 @@ class GitRepoDispatcher {
     try fetchStarsOf(scraper: PerfectScraper(drop: drop))
     try fetchStarsOf(scraper: KituraScraper(drop: drop))
     try fetchStarsOf(scraper: ZewoScraper(drop: drop))
-  }
-  
-  func getAllGitRepos(req: GitRepoListRequest) throws -> GitRepoListResponse? {
-    guard let list = try gitRepoRepository.findAllGitRepos() else {
-      throw RepositoryError.couldNotFetchGitRepos("could not fetch git repositories")
-    }
-    return GitRepoListResponse(list: list)
   }
   
   func getStarsPerDay(of repoId: Int) throws -> Int {

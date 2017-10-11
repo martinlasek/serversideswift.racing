@@ -10,9 +10,9 @@ extension Droplet {
     
     get("/") { request in
       
-      let repoDispatcher = GitRepoDispatcher(drop: self)
+      let gitRepoDispatcher = GitRepoDispatcher(drop: self)
       
-      guard let repos = try repoDispatcher.getAllGitRepos(req: GitRepoListRequest()) else {
+      guard let repos = try gitRepoDispatcher.getAll(req: GitRepoListRequest()) else {
         throw GitRepoError.couldNotGetRepoList("could not get git repos")
       }
       
@@ -26,8 +26,8 @@ extension Droplet {
             "name": repo.name,
             "url": repo.url,
             "website": repo.website,
-            "stars": try repoDispatcher.getStarsOfLastThirtyDays(of: repo.id!.int!).makeJSON(),
-            "stars_per_day": repoDispatcher.getStarsPerDay(of: repo.id!.int!)
+            "stars": try gitRepoDispatcher.getStarsOfLastThirtyDays(of: repo.id!.int!).makeJSON(),
+            "stars_per_day": gitRepoDispatcher.getStarsPerDay(of: repo.id!.int!)
           ]
         )
       }
