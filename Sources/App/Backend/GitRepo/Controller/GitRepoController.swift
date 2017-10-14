@@ -12,7 +12,7 @@ final class GitRepoController {
   
   func setupRoutes() {
     drop.get("api/gitrepo/list", handler: getAllGitRepos)
-    drop.get("api/gitrepo/stars", handler: getStars)
+    drop.get("api/gitrepo/", ":id", handler: getStars)
   }
   
   func getAllGitRepos(_ req: Request) throws -> ResponseRepresentable {
@@ -23,13 +23,24 @@ final class GitRepoController {
   }
   
   func getStars(_ req: Request) throws -> ResponseRepresentable {
-    guard let gitRepoId = req.json?["gitRepoId"]?.int else {
-      return try JSON(node: ["status": 406, "message": "no 'gitRepoId' provided"])
+    
+    /// get the in setupRoutes defined parameter as int
+    guard let gitRepoId = req.parameters["id"]?.int else {
+      return try JSON(node: ["status": 406, "message": "no 'id' provided"])
     }
-    guard let days = req.json?["days"]?.double else {
+    
+    /// get the ?days=30 parameter as double
+    guard let days = req.data["days"]?.double else {
       return try JSON(node: ["status": 406, "message": "no 'days' provided"])
     }
+    
     let req = StarsRequest(gitRepoId: gitRepoId, days: days)
-    return ""
+    guard let resp = try gitRepoDispatcher.getStars(req: req) else {
+      return try Response(
+        status: .internalServerError,
+        json: try JSON(node: ["message": "could not get stars. days: \(days), gitRepoId: \(gitRepoId)"])
+      )
+    }
+    return try resp.makeJSON()
   }
 }

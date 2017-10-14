@@ -5,9 +5,15 @@ extension Droplet {
   
   func setupRoutes() throws {
     
+    ///
+    /// NEW
+    ///
     let gitRepoController = GitRepoController(drop: self)
     gitRepoController.setupRoutes()
     
+    ///
+    /// OLD
+    ///
     get("/") { request in
       
       let gitRepoDispatcher = GitRepoDispatcher(drop: self)

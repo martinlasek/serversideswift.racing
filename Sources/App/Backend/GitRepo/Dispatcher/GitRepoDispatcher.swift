@@ -20,6 +20,13 @@ class GitRepoDispatcher {
     return GitRepoListResponse(list: list)
   }
   
+  func getStars(req: StarsRequest) throws -> StarsResponse? {
+    guard let list = try gitRepoRepository.findStarsSince(date: req.day, of: req.gitRepoId) else {
+      throw GitRepoError.couldNotGetStars("could not find stars since '\(req.day)' for '\(req.gitRepoId)'")
+    }
+    return StarsResponse(gitRepoId: req.gitRepoId, list: list)
+  }
+  
   ///
   /// OLD
   ///

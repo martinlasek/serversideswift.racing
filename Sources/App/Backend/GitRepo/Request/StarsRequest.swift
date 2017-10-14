@@ -1,9 +1,9 @@
 class StarsRequest {
   let gitRepoId: Int
-  let days: Date
+  let day: Date
   
   init(gitRepoId: Int, days: Double) {
     self.gitRepoId = gitRepoId
-    self.days = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate - Helper.convertSecondsFromAmount(days))
+    self.day = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate - Helper.convertSecondsFromAmount(days))
   }
 }

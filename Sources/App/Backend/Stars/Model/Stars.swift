@@ -19,16 +19,13 @@ final class Stars: Model {
   
   func makeRow() throws -> Row {
     var row = Row()
-    
     try row.set("repository_id", repositoryId)
     try row.set("amount", amount)
-    
     return row
   }
 }
 
 extension Stars: Preparation {
-  
   static func prepare(_ database: Database) throws {
     try database.create(self) { builder in
       builder.id()
@@ -36,7 +33,6 @@ extension Stars: Preparation {
       builder.int("amount")
     }
   }
-  
   static func revert(_ database: Database) throws {
     try database.delete(self)
   }
@@ -52,11 +48,9 @@ extension Stars: JSONConvertible {
   
   func makeJSON() throws -> JSON {
     var json = JSON()
-    
     try json.set("repository_id", repositoryId)
     try json.set("amount", amount)
     try json.set("created_at", createdAt)
-    
     return json
   }
 }
