@@ -22,11 +22,9 @@ final class GitRepo: Model {
 
   func makeRow() throws -> Row {
     var row = Row()
-    
     try row.set("name", name)
     try row.set("url", url)
     try row.set("website", website)
-    
     return row
   }
 }
@@ -57,12 +55,10 @@ extension GitRepo: JSONConvertible {
     
   func makeJSON() throws -> JSON {
     var json = JSON()
-    
     try json.set("id", id)
     try json.set("name", name)
     try json.set("url", url)
     try json.set("website", website)
-    
     return json
   }
 }

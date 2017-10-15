@@ -1,9 +1,9 @@
 class StarsResponse {
-  let gitRepoId: Int
+  let gitRepo: GitRepo
   let list: [Stars]
   
-  init(gitRepoId: Int, list: [Stars]) {
-    self.gitRepoId = gitRepoId
+  init(gitRepo: GitRepo, list: [Stars]) {
+    self.gitRepo = gitRepo
     self.list = list
   }
 }
@@ -11,7 +11,7 @@ class StarsResponse {
 extension StarsResponse: JSONRepresentable {
   func makeJSON() throws -> JSON {
     var json = JSON()
-    try json.set("gitRepoId", gitRepoId)
+    try json.set("gitRepo", gitRepo.makeJSON())
     try json.set("list", list.makeJSON())
     return json
   }

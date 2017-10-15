@@ -16,10 +16,10 @@ final class GitRepoController {
   }
   
   func getAllGitRepos(_ req: Request) throws -> ResponseRepresentable {
-    guard let list = try gitRepoDispatcher.getAll(req: GitRepoListRequest()) else {
+    guard let res = try gitRepoDispatcher.getAll(req: GitRepoListRequest()) else {
       return try Response(status: .internalServerError, json: try JSON(node: ["message": "could not fetch git repos from database"]))
     }
-    return try list.list.makeJSON()
+    return try res.list.makeJSON()
   }
   
   func getStars(_ req: Request) throws -> ResponseRepresentable {
@@ -36,10 +36,7 @@ final class GitRepoController {
     
     let req = StarsRequest(gitRepoId: gitRepoId, days: days)
     guard let resp = try gitRepoDispatcher.getStars(req: req) else {
-      return try Response(
-        status: .internalServerError,
-        json: try JSON(node: ["message": "could not get stars. days: \(days), gitRepoId: \(gitRepoId)"])
-      )
+      return try JSON(node: ["status": 500, "message": "could not find stars for gitrepoid: '\(gitRepoId)' and days: '\(days)'"])
     }
     return try resp.makeJSON()
   }

@@ -14,17 +14,15 @@ class GitRepoDispatcher {
   ///
   
   func getAll(req: GitRepoListRequest) throws -> GitRepoListResponse? {
-    guard let list = try gitRepoRepository.findAllGitRepos() else {
-      throw RepositoryError.couldNotFetchGitRepos("could not fetch git repositories")
-    }
+    guard let list = try gitRepoRepository.findAllGitRepos() else { return nil }
     return GitRepoListResponse(list: list)
   }
   
   func getStars(req: StarsRequest) throws -> StarsResponse? {
-    guard let list = try gitRepoRepository.findStarsSince(date: req.day, of: req.gitRepoId) else {
-      throw GitRepoError.couldNotGetStars("could not find stars since '\(req.day)' for '\(req.gitRepoId)'")
-    }
-    return StarsResponse(gitRepoId: req.gitRepoId, list: list)
+    guard let list = try gitRepoRepository.findStarsSince(date: req.day, of: req.gitRepoId) else { return nil }
+    if list.isEmpty { return nil }
+    guard let gitRepo = try gitRepoRepository.findGitRepoBy(id: req.gitRepoId) else { return nil }
+    return StarsResponse(gitRepo: gitRepo, list: list)
   }
   
   ///
