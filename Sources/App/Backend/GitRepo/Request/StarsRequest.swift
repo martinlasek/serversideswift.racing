@@ -4,6 +4,6 @@ class StarsRequest {
   
   init(gitRepoId: Int, days: Double) {
     self.gitRepoId = gitRepoId
-    self.day = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate - Helper.convertSecondsFromAmount(days))
+    self.day = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate - Helper.convertDaysIntoSeconds(days))
   }
 }
