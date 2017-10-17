@@ -1,12 +1,14 @@
 import Vapor
 
 class GitRepoDispatcher {
-  let gitRepoRepository = GitRepoRepository()
-  let starsRepo = StarsRepository()
+  let gitRepoRepository: GitRepoRepository
+  let starsRepo: StarsRepository
   let drop: Droplet
   
   init(drop: Droplet) {
     self.drop = drop
+    self.gitRepoRepository = GitRepoRepository()
+    self.starsRepo = StarsRepository()
   }
 
   ///
@@ -16,13 +18,6 @@ class GitRepoDispatcher {
   func getAll(req: GitRepoListRequest) throws -> GitRepoListResponse? {
     guard let list = try gitRepoRepository.findAllGitRepos() else { return nil }
     return GitRepoListResponse(list: list)
-  }
-  
-  func getStars(req: StarsRequest) throws -> StarsResponse? {
-    guard let list = try gitRepoRepository.findStarsSince(date: req.day, of: req.gitRepoId) else { return nil }
-    if list.isEmpty { return nil }
-    guard let gitRepo = try gitRepoRepository.findGitRepoBy(id: req.gitRepoId) else { return nil }
-    return StarsResponse(gitRepo: gitRepo, list: list)
   }
   
   ///
@@ -41,11 +36,6 @@ class GitRepoDispatcher {
   func getStarsPerDay(of repoId: Int) throws -> Int {
     let stars = try starsRepo.findAllStarsBy(repoId: repoId).map {star in star.amount}
     return Int(stars.reduce(0, +) / stars.count)
-  }
-  
-  func getStarsOfLastThirtyDays(of repoId: Int) throws -> [Stars] {
-    let todayMinusThirtyDays = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate-Days.thirty.rawValue)
-    return try starsRepo.findAllStarsSince(date: todayMinusThirtyDays, of: repoId)
   }
   
   func getAllStarsBy(repoId: Int) throws -> [Stars] {

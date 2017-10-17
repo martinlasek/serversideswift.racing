@@ -1,4 +1,4 @@
-class StarsRequest {
+class StarListRequest {
   let gitRepoId: Int
   let day: Date
   
