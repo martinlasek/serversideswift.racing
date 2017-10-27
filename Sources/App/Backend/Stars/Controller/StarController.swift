@@ -11,6 +11,7 @@ final class StarsController {
     let api = drop.grouped("api")
     api.get("stars/", ":id", handler: getStars)
   }
+  
   func getStars(_ req: Request) throws -> ResponseRepresentable {
     
     /// get the in setupRoutes defined parameter as int
@@ -25,8 +26,9 @@ final class StarsController {
     
     let req = StarListRequest(gitRepoId: gitRepoId, days: days)
     guard let resp = try starsDispatcher.getStarList(req: req) else {
-      return try Helper.errorJson(status: 500, message: "could not find stars for gitrepoid: '\(gitRepoId)' and days: '\(days)'")
+      return try Helper.errorJson(status: 500, message: "could not find stars for 'gitrepoid: \(gitRepoId)' and 'days: \(days)'")
     }
+    
     return try resp.makeJSON()
   }
 }
