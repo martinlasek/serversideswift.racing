@@ -1,7 +1,51 @@
+@import "../definition/color";
+
+html {
+  height: 100%;
+}
+
 body {
+  background-color: #262831;
+  color: @white;
+  font-family: 'Lato', 'Helvetica Neue', 'Ubuntu', 'Verdana', 'sans-serif';
+  height: 100%;
   margin: 0;
 }
 
 #app {
   height: 100%;
+
+  > .container {
+    min-height: 100%;
+  }
+}
+
+.container {
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media screen and (min-width: 750px) {
+
+  .container {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  .container {
+    width: 970px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .container {
+    width: 1170px;
+  }
 }

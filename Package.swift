@@ -1,25 +1,31 @@
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "serversideswift.racing",
-    targets: [
-      Target(name: "App"),
-      Target(name: "Run", dependencies: ["App"]),
+    products: [
+      .library(name: "App", targets: ["App"]),
+      .executable(name: "Run", targets: ["Run"])
     ],
     dependencies: [
-      .Package(url: "https://github.com/vapor/vapor.git", majorVersion: 2),
-      .Package(url: "https://github.com/vapor/fluent-provider.git", majorVersion: 1),
-      .Package(url: "https://github.com/vapor/leaf-provider.git", majorVersion: 1),
-      .Package(url: "https://github.com/vapor/postgresql-provider.git", majorVersion: 2),
-      .Package(url: "https://github.com/BrettRToomey/Jobs.git", majorVersion: 1),
-      .Package(url: "https://github.com/scinfu/SwiftSoup.git", majorVersion: 1)
+      .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.1.0")),
+      .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.3.0")),
+      .package(url: "https://github.com/vapor/leaf-provider.git", .upToNextMajor(from: "1.1.0")),
+      .package(url: "https://github.com/vapor/postgresql-provider.git", .upToNextMajor(from: "2.1.0")),
+      .package(url: "https://github.com/BrettRToomey/Jobs.git", .upToNextMajor(from: "1.1.2")),
+      .package(url: "https://github.com/scinfu/SwiftSoup.git", .upToNextMajor(from: "1.5.9"))
     ],
-    exclude: [
-      "Config",
-      "Database",
-      "Localization",
-      "Public",
-      "Resources",
+    targets: [
+      .target(name: "App", dependencies: ["Vapor", "FluentProvider", "LeafProvider", "PostgreSQLProvider", "Jobs", "SwiftSoup"],
+        exclude: [
+          "Config",
+          "Public",
+          "Resources",
+        ]
+      ),
+      .target(name: "Run", dependencies: ["App"]),
+      .testTarget(name: "AppTests", dependencies: ["App", "Testing"])
     ]
 )
 

@@ -13,9 +13,11 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "chart.js": "^2.7.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "vue": "^2.4.4",
+    "vue-chartjs": "^3.0.2",
     "vue-router": "^2.7.0",
     "vuex": "^2.4.1",
     "vuex-persistedstate": "^2.0.0"
