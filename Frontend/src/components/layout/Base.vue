@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section>
-      <slot name="content"></slot>
+      <slot />
     </section>
     <footer-layout />
   </div>

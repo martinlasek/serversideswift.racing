@@ -13,6 +13,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "chart.js": "^2.7.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",

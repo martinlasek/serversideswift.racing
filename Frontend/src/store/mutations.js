@@ -8,8 +8,17 @@ export default {
 
 // pragma mark - git repo
 
-  /** stores git repo list in global state */
   [types.SET_GIT_REPO_LIST] (state, gitRepoList) {
     state.gitRepoList = gitRepoList;
+  },
+
+  [types.SET_DATA_FOR_GIT_REPO] (state, gitRepoData) {
+
+    state.lineChart.data.push(gitRepoData);
+  },
+
+  [types.CLEAR_DATA_FOR_GIT_REPO] (state) {
+
+    state.lineChart.data = [];
   }
 }

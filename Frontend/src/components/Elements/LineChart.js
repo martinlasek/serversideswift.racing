@@ -1,41 +1,46 @@
-import { Line } from 'vue-chartjs'
+import { Line, mixins } from 'vue-chartjs';
+const { reactiveProp } = mixins;
 
 export default {
   extends: Line,
 
+  mixins: [reactiveProp],
+
   mounted() {
 
-    this.renderChart({
-      labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
-      datasets: [
-        {
-          label: 'Vapor',
-          borderColor: '#8a60c9',
-          backgroundColor: '#ffffff00',
-          pointBackgroundColor: '#8a60c9',
-          pointBorderColor: '#ffffff00',
-          pointHoverBackgroundColor: '#ffffff',
-          data: [20, 29, 23, 34, 35, 42, 55, 20, 29, 23, 34, 20, 29, 23, 34, 35, 42, 55, 35, 42, 55, 20, 29, 23, 34, 35, 42, 55, 60, 70]
-        },
-        {
-          label: 'Perfect',
-          borderColor: '#dda25d',
-          backgroundColor: '#ffffff00',
-          data: [60, 55, 32, 10, 2, 12, 53]
-        },
-        {
-          label: 'Kitura',
-          borderColor: '#1ba8dd',
-          backgroundColor: '#ffffff00',
-          data: [23, 27, 32, 41, 49, 57, 77 ]
-        },
-        {
-          label: 'Zewo',
-          borderColor: '#e64759',
-          backgroundColor: '#ffffff00',
-          data: [10, 20, 15, 30, 25, 40, 350]
-        }
-      ]
-    }, {responsive: true, maintainAspectRatio: false, legend: false})
+    // pragma mark - unsure about giving gradients since it irritates a little
+/**
+    const vaporGradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+    const perfectGradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+    const kituraGradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+    const zewoGradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+    vaporGradient.addColorStop(0, 'rgba(106, 111, 201, 0.5)');
+    vaporGradient.addColorStop(0.5, 'rgba(106, 111, 201, 0.25)');
+    vaporGradient.addColorStop(1, 'rgba(106, 111, 201, 0)');
+
+    perfectGradient.addColorStop(0, 'rgba(221, 162, 93, 0.5)');
+    perfectGradient.addColorStop(0.5, 'rgba(221, 162, 93, 0.25)');
+    perfectGradient.addColorStop(1, 'rgba(221, 162, 93, 0)');
+
+    kituraGradient.addColorStop(0, 'rgba(27, 168, 221, 0.5)');
+    kituraGradient.addColorStop(0.5, 'rgba(27, 168, 221, 0.25)');
+    kituraGradient.addColorStop(1, 'rgba(27, 168, 221, 0)');
+
+    zewoGradient.addColorStop(0, 'rgba(230, 71, 89, 0.5)');
+    zewoGradient.addColorStop(0.5, 'rgba(230, 71, 89, 0.25)');
+    zewoGradient.addColorStop(1, 'rgba(230, 71, 89, 0)');
+
+    this.chartData.datasets.map(data => {
+
+      switch (data.label) {
+        case frameworks.zewo.name: data.backgroundColor = zewoGradient; break;
+        case frameworks.kitura.name: data.backgroundColor = kituraGradient; break;
+        case frameworks.perfect.name: data.backgroundColor = perfectGradient; break;
+        case frameworks.vapor.name: data.backgroundColor = vaporGradient; break;
+      }
+    });
+**/
+    this.renderChart(this.chartData, {responsive: true, maintainAspectRatio: false, legend: false})
   }
 }

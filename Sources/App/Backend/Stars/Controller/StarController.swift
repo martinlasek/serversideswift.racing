@@ -9,7 +9,7 @@ final class StarsController {
   
   func setupRoutes() {
     let api = drop.grouped("api")
-    api.get("stars/", ":id", handler: getStars)
+    api.get("stars", ":id", handler: getStars)
   }
   
   func getStars(_ req: Request) throws -> ResponseRepresentable {
