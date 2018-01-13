@@ -1,6 +1,6 @@
 <template>
   <base-layout>
-    <line-chart v-if="hasChartData" :chartData="chartData"/>
+    <line-chart v-if="hasChartData" :chartData="chartData" />
     <separator />
   </base-layout>
 </template>
@@ -12,6 +12,7 @@
   import {frameworks} from "../../../utils/constants";
   import * as Api from "../../../api/api";
   import LineChartHelper from "../../../utils/LineChartHelper";
+  import DayContext from '../../../contexts/DayContext';
 
   export default {
     components: { BaseLayout, LineChart, Separator },
@@ -19,19 +20,20 @@
     computed: {
 
       hasChartData() {
-
         return this.chartData !== null;
       },
 
       chartData() {
 
+        const ctxt = new DayContext(this.$store, 30);
+        
         const list = LineChartHelper.dayContext();
 
         if (list.length === 0) {
 
           return null;
         }
-        console.log(list);
+
         const structuredDataList = list.map(fw => {
 
           const e = {
@@ -60,7 +62,6 @@
         this.$store.dispatch('clearStarsDataForRepo');
 
         gitRepoList.forEach(repo => {
-
           Api.getStarsFromRepoForGivenDays(repo.id, 365);
         });
       }

@@ -45,7 +45,8 @@ export function getAllGitRepos(callback = null) {
     })
     .catch(error => {
 
-      console.log(error.response);
+      console.log(error);
+      throw "Error: Could not fetch git repo list"
     })
   ;
 }

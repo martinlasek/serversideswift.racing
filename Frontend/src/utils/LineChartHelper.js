@@ -1,5 +1,7 @@
 import store from "../store";
 import moment from "moment";
+import Helper from './Helper';
+import DateHelper from './DateHelper';
 
 export default class LineChartHelper {
 
@@ -9,28 +11,12 @@ export default class LineChartHelper {
 
     if (gitRepoList.length === 0) { return []; }
 
-    /** check whether stars property exists for each repo */
-    let allStarsAreSet = true;
-    gitRepoList.forEach(repo => {
-
-      if (repo.stars === undefined) {
-
-        allStarsAreSet = false;
-      }
-    });
-
-    if (!allStarsAreSet) { return []; }
-
-    /** create array with last 30 dates starting from today */
-    const lastThirtyDays = [];
-    for (let day = 1; day <= days; day++) {
-
-      let date = moment().subtract(day, 'days').format("DD-MM-YYYY");
-      lastThirtyDays.push(date)
+    if (!Helper.doesListElementsHave('stars', gitRepoList)) {
+      return [];
     }
-    /** we want the latest date to come last */
-    lastThirtyDays.reverse();
 
+    const lastThirtyDays = DateHelper.getArrayWithPastDaysAsc(days);
+    
     /**
      * map stars list to key value list of length of given days
      * where day is key to star object having an amount (amount = null if day wasn't given)
@@ -94,7 +80,4 @@ export default class LineChartHelper {
       return 0;
     });
   }
-
-  createChartData
-
 }
