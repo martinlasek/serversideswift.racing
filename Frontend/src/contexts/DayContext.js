@@ -6,7 +6,6 @@ import {frameworks} from '../utils/constants'
 export default class DayContext {
 
   constructor(store, days) {
-
     this._store = store;
     this._days = days;
     this._gitRepoList = Helper.deepCopy(this._store.getters.getGitRepoList);
