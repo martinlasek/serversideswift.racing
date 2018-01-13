@@ -12,6 +12,7 @@
   import {frameworks} from "../../../utils/constants";
   import * as Api from "../../../api/api";
   import LineChartHelper from "../../../utils/LineChartHelper";
+  import Helper from "../../../utils/Helper";
   import DayContext from '../../../contexts/DayContext';
 
   export default {
@@ -26,30 +27,7 @@
       chartData() {
 
         const ctxt = new DayContext(this.$store, 30);
-        
-        const list = LineChartHelper.dayContext();
-
-        if (list.length === 0) {
-
-          return null;
-        }
-
-        const structuredDataList = list.map(fw => {
-
-          const e = {
-            label: fw.name,
-            data: fw.processedStars.map(d => d.amount)
-          };
-
-          return {...e, ...frameworks[fw.name].lineChartStyle}
-        });
-
-        const sortedList = LineChartHelper.sortDescOnDataSum(structuredDataList);
-
-        return {
-          labels: list[0].processedStars.map(el => el.created_at.split('-')[0]),
-          datasets: sortedList
-        };
+        return ctxt.chartData();
       }
     },
 
