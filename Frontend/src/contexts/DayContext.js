@@ -32,7 +32,8 @@ export default class DayContext {
       const dataSet = {
         label: repo.name,
         data: processedStars.map(star => star.amount),
-        chartLabels: processedStars.map(star => DateHelper.getDayFromDate(star.created_at))
+        chartLabels: processedStars.map(star => DateHelper.getDayFromDate(star.created_at)),
+        originData: processedStars
       }
 
       return {...dataSet, ...frameworks[repo.name].lineChartStyle};
@@ -55,5 +56,15 @@ export default class DayContext {
       labels: this._gitRepoList[0].chartLabels,
       datasets: this._gitRepoList
     };
+  }
+
+  chartTitle() {
+    const k = this._gitRepoList[0].originData;
+    const l = k.map(star => DateHelper.getMonthFromDate(star.created_at));
+    const m = [...new Set(l)]; // creates an array with unique elements
+    const n = m.map(monthNr => DateHelper.getMonthByNumber(monthNr)); // convert number into names
+    const o = n.map(month => month.slice(0, 3) + '.'); // take first three letters
+    const p = o.length > 1 ? o.join(' / ') : o[0]; // concatenate month names when more than one exists
+    return p;
   }
 }

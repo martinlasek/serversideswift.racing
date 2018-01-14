@@ -7,19 +7,37 @@ export default class DateHelper {
     return new moment(datetime, "YYYY-MM-DD").format("DD-MM-YYYY")
   }
 
-  /// returns '24' from '24-10-2017'
+  /// param: date of format '24-10-2017'
   static getDayFromDate(date) {
     return new moment(date, "DD-MM-YYYY").date();
   }
 
-  /// returns '10' from '24-10-2017'
+  /// param: date of format '24-10-2017'
   static getMonthFromDate(date) {
-    return date.split('-')[1];
+    return new moment(date, "DD-MM-YYYY").month() + 1;
   }
 
-  /// returns '2017' from '24-10-2017'
+  /// param: date of format '24-10-2017'
   static getYearFromDate(date) {
-    return date.split('-')[2];
+    return new moment(date, "DD-MM-YYYY").year();
+  }
+
+  static getMonthByNumber(monthNumber) {
+    switch (monthNumber) {
+      case 1: return 'January'; break;
+      case 2: return 'Feburary'; break;
+      case 3: return 'March'; break;
+      case 4: return 'April'; break;
+      case 5: return 'May'; break;
+      case 6: return 'June'; break;
+      case 7: return 'July'; break;
+      case 8: return 'August'; break;
+      case 9: return 'September'; break;
+      case 10: return 'October'; break;
+      case 11: return 'November'; break;
+      case 12: return 'December'; break;
+      default: throw 'Month for given number: ' + monthNumber + ' does not exists'
+    }
   }
 
   /// returns list with dates starting from today til given past days
