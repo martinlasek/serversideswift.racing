@@ -8,13 +8,11 @@ import mutations from '../store/mutations'
 Vue.use(Vuex);
 
 const state = {
-  gitRepoList: [],
+  repoList: [],
   lineChart: {
-    data: [],
-    units: {
-      day: true,
-      month: false,
-      year: false
+    data: {
+      labels: [],
+      datasets: []
     }
   }
 };

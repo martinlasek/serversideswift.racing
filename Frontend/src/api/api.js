@@ -7,15 +7,15 @@ const BASE_URL = 'http://127.0.0.1:9001/api';
 //const BASE_URL = '';
 
 const GET_URL = {
-  stars: (gitRepoId, days) => BASE_URL + '/stars/' + gitRepoId + '?days=' + days,
-  gitRepoList: BASE_URL + '/gitrepo/list'
+  STARS: (gitRepoId, days) => BASE_URL + '/stars/' + gitRepoId + '?days=' + days,
+  REPO_LIST: BASE_URL + '/gitrepo/list'
 };
 
 export function getStarsFromRepoForGivenDays(repoId, days) {
 
   axios
     .get(
-      GET_URL.stars(repoId, days)
+      GET_URL.STARS(repoId, days)
     )
     .then(resp => {
 
@@ -24,21 +24,18 @@ export function getStarsFromRepoForGivenDays(repoId, days) {
     .catch(error => {
 
       console.log(error);
-      throw "Error: Could not fetch stars for repo with id: " + repoId;
+      throw `Error: Could not fetch stars for repo with id: ${repoId}`;
     })
   ;
 }
 
-export function getAllGitRepos(callback = null) {
+export function getRepoList(callback = null) {
 
   axios
-    .get(
-      GET_URL.gitRepoList
-    )
+    .get(GET_URL.REPO_LIST)
     .then(resp => {
 
-      store.dispatch('setGitRepoList', resp.data);
-
+      store.dispatch('setRepoList', resp.data);
       if (callback !== null) {
 
         callback();

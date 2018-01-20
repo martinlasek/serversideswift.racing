@@ -6,19 +6,9 @@ import * as types from '../store/mutation-types'
  */
 export default {
 
-// pragma mark - git repo
+  /// Mark - git repo
 
-  [types.SET_GIT_REPO_LIST] (state, gitRepoList) {
-    state.gitRepoList = gitRepoList;
-  },
-
-  [types.SET_DATA_FOR_GIT_REPO] (state, gitRepoData) {
-
-    state.lineChart.data.push(gitRepoData);
-  },
-
-  [types.CLEAR_DATA_FOR_GIT_REPO] (state) {
-
-    state.lineChart.data = [];
+  [types.SET_REPO_LIST] (state, repoList) {
+    state.repoList = repoList;
   }
 }

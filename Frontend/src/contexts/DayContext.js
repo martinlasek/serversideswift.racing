@@ -8,7 +8,7 @@ export default class DayContext {
   constructor(store, days) {
     this._store = store;
     this._days = days;
-    this._gitRepoList = Helper.deepCopy(this._store.getters.getGitRepoList);
+    this._gitRepoList = this._store.getters.getRepoList;
 
     this.initChartData();
   }
@@ -26,6 +26,10 @@ export default class DayContext {
 
     const timeSpan = DateHelper.getListWithPastDays(this._days);
 
+    /**
+     * override the address in heap to the store with
+     * address to new created list by map
+     * */
     this._gitRepoList = this._gitRepoList.map(repo => {
 
       const processedStars = LineChartHelper.createListOfStarsForEachDay(timeSpan, repo.stars);
@@ -34,7 +38,7 @@ export default class DayContext {
         data: processedStars.map(star => star.amount),
         chartLabels: processedStars.map(star => DateHelper.getDayFromDate(star.created_at)),
         originData: processedStars
-      }
+      };
 
       return {...dataSet, ...frameworks[repo.name].lineChartStyle};
     });

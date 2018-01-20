@@ -6,19 +6,18 @@ import DateHelper from "../utils/DateHelper";
  *  are a bridge used to mutate the state
  */
 
-// pragma mark - git repo
+/// Mark - git repo
 
-export const setGitRepoList = (state, gitRepolist) => {
-
-  state.commit(types.SET_GIT_REPO_LIST, gitRepolist);
+export const setRepoList = (state, repolist) => {
+  state.commit(types.SET_REPO_LIST, repolist);
 };
 
 export const setStarsDataToAccordingGitRepo = (state, starsData) => {
 
-  let gitRepoList = [...state.getters.getGitRepoList];
-  gitRepoList = gitRepoList.map(gitRepo => {
+  let repoList = state.getters.getRepoList;
+  repoList = repoList.map(repo => {
 
-    if (gitRepo.id === starsData.gitRepoId) {
+    if (repo.id === starsData.gitRepoId) {
 
       const stars = {};
       starsData.list.forEach(star => {
@@ -27,16 +26,11 @@ export const setStarsDataToAccordingGitRepo = (state, starsData) => {
         stars[date] = {...star, ...{created_at: date}};
       });
 
-      gitRepo.stars = stars;
+      repo.stars = stars;
     }
 
-    return gitRepo;
+    return repo;
   });
 
-  state.commit(types.SET_GIT_REPO_LIST, gitRepoList);
-};
-
-export const clearStarsDataForRepo = (state) => {
-
-  state.commit(types.CLEAR_DATA_FOR_GIT_REPO);
+  state.commit(types.SET_REPO_LIST, repoList);
 };

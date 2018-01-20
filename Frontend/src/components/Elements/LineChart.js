@@ -41,31 +41,24 @@ export default {
       }
     });
 **/
+    const axesStyle = {
+      ticks: {
+        fontColor: '#828a9f'
+      },
+      gridLines: {
+        display: true,
+        color: '#828a9f',
+        lineWidth: 0.1
+      }
+    };
+
     const options = {
       responsive: true,
       maintainAspectRatio: false,
       legend: false,
       scales: {
-        yAxes: [{
-          ticks: {
-            fontColor: '#828a9f'
-          },
-          gridLines: {
-            display: true,
-            color: '#828a9f',
-            lineWidth: 0.1
-          }
-        }],
-        xAxes: [{
-          ticks: {
-            fontColor: '#828a9f'
-          },
-          gridLines: {
-            display: true,
-            color: '#828a9f',
-            lineWidth: 0.1
-          }
-        }]
+        yAxes: [axesStyle],
+        xAxes: [axesStyle]
       }
     };
 
