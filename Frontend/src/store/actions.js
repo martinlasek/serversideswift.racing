@@ -8,8 +8,8 @@ import DateHelper from "../utils/DateHelper";
 
 /// Mark - git repo
 
-export const setRepoList = (state, repolist) => {
-  state.commit(types.SET_REPO_LIST, repolist);
+export const setRepoList = (state, repoList) => {
+  state.commit(types.SET_REPO_LIST, repoList);
 };
 
 export const setStarsDataToAccordingGitRepo = (state, starsData) => {

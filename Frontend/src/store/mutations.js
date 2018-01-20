@@ -1,4 +1,4 @@
-import * as types from '../store/mutation-types'
+import * as types from '../store/mutation-types';
 
 /**
  * MUTATIONS
