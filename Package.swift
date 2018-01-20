@@ -11,13 +11,12 @@ let package = Package(
     dependencies: [
       .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "2.1.0")),
       .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.3.0")),
-      .package(url: "https://github.com/vapor/leaf-provider.git", .upToNextMajor(from: "1.1.0")),
       .package(url: "https://github.com/vapor/postgresql-provider.git", .upToNextMajor(from: "2.1.0")),
       .package(url: "https://github.com/BrettRToomey/Jobs.git", .upToNextMajor(from: "1.1.2")),
       .package(url: "https://github.com/scinfu/SwiftSoup.git", .upToNextMajor(from: "1.5.9"))
     ],
     targets: [
-      .target(name: "App", dependencies: ["Vapor", "FluentProvider", "LeafProvider", "PostgreSQLProvider", "Jobs", "SwiftSoup"],
+      .target(name: "App", dependencies: ["Vapor", "FluentProvider", "PostgreSQLProvider", "Jobs", "SwiftSoup"],
         exclude: [
           "Config",
           "Public",
