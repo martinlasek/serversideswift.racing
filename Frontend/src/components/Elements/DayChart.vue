@@ -35,7 +35,7 @@
 
         const timeSpan = DateHelper.getListWithPastDays(30);
         let dataSets = DayChartHelper.createDataSetForEachRepo(timeSpan, repoList);
-        dataSets = Helper.sortDescOnDataSum('data', dataSets);
+        dataSets = Helper.sortDescOnSumOfGivenProp('data', dataSets);
 
         return {
           labels: dataSets[0].chartLabels,

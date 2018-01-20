@@ -8,13 +8,7 @@ import mutations from '../store/mutations'
 Vue.use(Vuex);
 
 const state = {
-  repoList: [],
-  lineChart: {
-    data: {
-      labels: [],
-      datasets: []
-    }
-  }
+  repoList: []
 };
 
 export default new Vuex.Store({

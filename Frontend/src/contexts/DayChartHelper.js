@@ -1,4 +1,3 @@
-import Helper from '../utils/Helper';
 import DateHelper from '../utils/DateHelper';
 import LineChartHelper from '../utils/LineChartHelper';
 import {frameworks} from '../utils/constants'
@@ -7,10 +6,6 @@ export default class DayChartHelper {
 
   static createDataSetForEachRepo(days, repoList) {
 
-    /**
-     * override the address in heap to the store with
-     * address to new created list by map
-     * */
     return repoList.map(repo => {
 
       const processedStars = LineChartHelper.createListOfStarsForEachDay(days, repo.stars);

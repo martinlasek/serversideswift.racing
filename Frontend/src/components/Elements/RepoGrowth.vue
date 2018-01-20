@@ -24,11 +24,7 @@ export default {
 
       const list = gitRepoList.filter(repo => repo.name === this.gitRepoName);
 
-      if (!Helper.doesListElementsHave('stars', list)) {
-        return false;
-      }
-
-      return true;
+      return Helper.doesListElementsHave('stars', list);
     },
 
     starsPerDay() {
