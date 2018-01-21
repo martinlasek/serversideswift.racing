@@ -8,20 +8,11 @@ class Helper {
   }
   
   static func getTodayStartingAtMidnight() -> Date {
-    
-    /// get todays date
     let today = Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate)
     
-    // initiate date formatter
-    let dateFormatter = DateFormatter()
-    
-    /// format date to string having only date (no hours/minutes/seconds)
-    dateFormatter.dateFormat = "YYYY-MM-DD"
-    let dateAsString = dateFormatter.string(from: today)
-    
-    /// format dateAsString back to Date object (here it somehow turns it into yesterday 23pm)
-    /// that's why we add another hour to get 00:00 of today
-    return dateFormatter.date(from: dateAsString)!.addingTimeInterval(3600)
+    /// The common calendar in Europe, the Western Hemisphere, and elsewhere.
+    let cal = Calendar(identifier: .gregorian)
+    return cal.startOfDay(for: today)
   }
   
   static func errorJson(status: Int, message: String) throws -> JSON {
