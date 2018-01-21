@@ -43,7 +43,7 @@ export default class DateHelper {
   /// returns list with dates starting from today til given past days
   static getListWithPastDays(days, asc = true) {
     const lastDays = [];
-    for (let day = 1; day <= days; day++) {
+    for (let day = 0; day < days; day++) {
       let date = moment().subtract(day, 'days').format("DD-MM-YYYY");
       lastDays.push(date)
     }
