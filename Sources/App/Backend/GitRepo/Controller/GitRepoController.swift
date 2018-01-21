@@ -19,7 +19,7 @@ final class GitRepoController {
     guard let res = try gitRepoDispatcher.getAll(req: GitRepoListRequest()) else {
       return try Helper.errorJson(status: 500, message: "could not fetch git repos from database")
     }
-    
+
     return try res.list.makeJSON()
   }
 }

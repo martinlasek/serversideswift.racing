@@ -1,4 +1,5 @@
 import Vapor
+import Foundation
 
 class GitRepoDispatcher {
   let gitRepoRepository: GitRepoRepository
@@ -44,7 +45,7 @@ class GitRepoDispatcher {
   
   // MARK: private functions
   
-  private func fetchStarsOf(scraper: Scraper) throws {
+  private func fetchStarsOf(scraper: StarScraper) throws {
     let starsAmount = try scraper.scrapeStars()
     
     guard let repo = try GitRepo.makeQuery().filter("name", scraper.name).first() else {
@@ -57,11 +58,19 @@ class GitRepoDispatcher {
       throw RepositoryError.noRepositoryIdIsSet("cannot get current repo id as int")
     }
     
+    let today = Helper.getTodayStartingAtMidnight()
+    
+    if let allStarsOfToday = try starsRepo.findStarsSince(date: today, of: repoId) {
+      for star in allStarsOfToday {
+        try star.delete()
+      }
+    }
+    
     let stars = Stars(repositoryId: repoId, amount: starsAmount)
     try stars.save()
   }
   
-  private func createRepository(scraper: Scraper) throws {
+  private func createRepository(scraper: StarScraper) throws {
     let vaporRepo = GitRepo(name: scraper.name, url: scraper.url, website: scraper.website)
     try vaporRepo.save()
   }
