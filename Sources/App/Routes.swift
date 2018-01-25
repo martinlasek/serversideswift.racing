@@ -7,5 +7,9 @@ extension Droplet {
     let starsController = StarsController(drop: self)
     gitRepoController.setupRoutes()
     starsController.setupRoutes()
+    
+    get("/") { req in
+      return try self.view.make("index.html")
+    }
   }
 }
