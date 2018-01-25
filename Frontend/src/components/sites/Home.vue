@@ -1,6 +1,6 @@
 <template>
   <base-layout>
-    <site-title title="serversideswift.racing" link="/" />
+    <page-header title="serversideswift.racing" link="/" />
     <day-chart />
     <separator />
     <repo-growth gitRepoName="vapor" link="https://github.com/vapor/vapor" />
@@ -18,10 +18,10 @@
   import RepoGrowth from '../Elements/RepoGrowth';
   import * as Api from '../../api/api';
   import DayChart from '../Elements/DayChart';
-  import SiteTitle from '../Elements/SiteTitle';
+  import PageHeader from '../Elements/PageHeader';
 
   export default {
-    components: { BaseLayout, LineChart, Separator, ChartTitle, RepoGrowth, DayChart, SiteTitle },
+    components: { BaseLayout, LineChart, Separator, ChartTitle, RepoGrowth, DayChart, PageHeader },
 
     methods: {
 
