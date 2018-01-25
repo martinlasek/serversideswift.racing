@@ -1,7 +1,10 @@
+@import "../definition/color";
+
 .git-repo-growth {
   width: 25%;
   float: left;
   text-align: center;
+  margin-bottom: 15px;
 
   h3 {
     font-size: 28px;
@@ -10,22 +13,22 @@
   }
 
   span {
-    color: #828a9f;
+    color: @gray;
   }
 
   &.vapor h3 {
-    color: #696fc9;
+    color: @vapor;
   }
 
   &.perfect h3 {
-    color: #dda25d;
+    color: @perfect;
   }
 
   &.kitura h3 {
-    color: #24a8de;
+    color: @kitura;
   }
 
   &.zewo h3 {
-    color: #e64758;
+    color: @zewo;
   }
 }

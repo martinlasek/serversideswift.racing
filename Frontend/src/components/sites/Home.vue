@@ -1,5 +1,6 @@
 <template>
   <base-layout>
+    <site-title title="serversideswift.racing" link="/"/>
     <day-chart />
     <separator />
     <repo-growth gitRepoName="vapor" />
@@ -15,11 +16,12 @@
   import ChartTitle from '../Elements/ChartTitle.vue';
   import Separator from '../Elements/Seperator';
   import RepoGrowth from '../Elements/RepoGrowth';
-  import * as Api from "../../api/api";
+  import * as Api from '../../api/api';
   import DayChart from '../Elements/DayChart';
+  import SiteTitle from '../Elements/SiteTitle';
 
   export default {
-    components: { BaseLayout, LineChart, Separator, ChartTitle, RepoGrowth, DayChart },
+    components: { BaseLayout, LineChart, Separator, ChartTitle, RepoGrowth, DayChart, SiteTitle },
 
     methods: {
 
