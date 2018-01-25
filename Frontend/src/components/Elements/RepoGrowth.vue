@@ -1,7 +1,8 @@
 <template>
   <div :class="['git-repo-growth', gitRepoName]">
     <h3 v-if="hasData"> {{starsPerDay}} </h3>
-    <span> {{gitRepoName}} </span>
+    <a v-if="hasLink" :href="link" target="_blank"> {{ gitRepoName }} </a>
+    <span v-else> {{ gitRepoName }} </span>
   </div>
 </template>
 
@@ -10,10 +11,15 @@ import Helper from "../../utils/Helper";
 
 export default {
   props: {
-    gitRepoName: {required: true}
+    gitRepoName: {required: true},
+    link: {default: ''}
   },
 
   computed: {
+
+    hasLink() {
+      return this.link.length > 0;
+    },
 
     hasData() {
       const gitRepoList = this.$store.getters.getRepoList;
@@ -28,7 +34,6 @@ export default {
     },
 
     starsPerDay() {
-
       const gitRepoList = this.$store.getters.getRepoList;
       const list = gitRepoList.filter(repo => repo.name === this.gitRepoName);
       const starList = [];

@@ -1,12 +1,12 @@
 <template>
   <base-layout>
-    <site-title title="serversideswift.racing" link="/"/>
+    <site-title title="serversideswift.racing" link="/" />
     <day-chart />
     <separator />
-    <repo-growth gitRepoName="vapor" />
-    <repo-growth gitRepoName="perfect" />
-    <repo-growth gitRepoName="kitura" />
-    <repo-growth gitRepoName="zewo" />
+    <repo-growth gitRepoName="vapor" link="https://github.com/vapor/vapor" />
+    <repo-growth gitRepoName="perfect" link="https://github.com/perfectlysoft/perfect" />
+    <repo-growth gitRepoName="kitura" link="https://github.com/IBM-Swift/Kitura" />
+    <repo-growth gitRepoName="zewo" link="https://github.com/Zewo/Zewo" />
   </base-layout>
 </template>
 

@@ -14,12 +14,12 @@
 
     props: {
       title: {required: true},
-      link: ''
+      link: {default: ''}
     },
 
     computed: {
       hasLink() {
-        return this.link !== undefined;
+        return this.link.length > 0;
       }
     }
   }
