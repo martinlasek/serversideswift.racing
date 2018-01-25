@@ -1,10 +1,10 @@
 import axios from 'axios';
 import store from '../store/index';
 
-const BASE_URL = 'http://127.0.0.1:9001/api';
+//const BASE_URL = 'http://127.0.0.1:9001/api';
 
 //pragma mark - use for PRODUCTION
-//const BASE_URL = '';
+const BASE_URL = '';
 
 const GET_URL = {
   STARS: (gitRepoId, days) => BASE_URL + '/stars/' + gitRepoId + '?days=' + days,
