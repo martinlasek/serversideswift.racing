@@ -4,7 +4,7 @@
     <div class="card">
       <div class="list">
         <ul>
-          <li v-for="element in list">
+          <li v-for="(element, index) in list" :key="index">
             {{ element }}
           </li>
         </ul>

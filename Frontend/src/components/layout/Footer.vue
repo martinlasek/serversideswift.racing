@@ -8,7 +8,7 @@
         <router-link :to="{ name: 'versions'}">Versions</router-link>
       </div>
       <div class="right">
-        <router-link :to="{ name: 'versions'}">Imprint</router-link>
+        <router-link :to="{ name: 'imprint'}">Imprint</router-link>
       </div>
     </div>
   </footer>
