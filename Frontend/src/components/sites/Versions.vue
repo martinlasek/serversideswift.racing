@@ -1,7 +1,7 @@
 <template>
   <base-layout>
     <page-header title="Versions" />
-    <list-card v-for="version in versions" :title="version.number" :list="version.changes"/>
+    <list-card v-for="(version, index) in versions" :title="version.number" :list="version.changes" :key="index" />
   </base-layout>
 </template>
 

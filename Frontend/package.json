@@ -20,8 +20,7 @@
     "vue": "^2.4.4",
     "vue-chartjs": "^3.0.2",
     "vue-router": "^2.7.0",
-    "vuex": "^2.4.1",
-    "vuex-persistedstate": "^2.0.0"
+    "vuex": "^2.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
